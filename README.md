@@ -1,4 +1,4 @@
-# Linux-for-Zynq-7000-ZynqMP
+# linux-vitis-buildroot-zynq
 The repository describes how to build linux for Zynq 7000 and ZynqMP from sources by using Xilinx Vitis 2022.1 and Buildroot
 All information is available on Xilinx Confluence [Xilinx Open Source Linux](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/460653138/Xilinx+Open+Source+Linux).
 
