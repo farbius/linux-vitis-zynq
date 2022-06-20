@@ -52,7 +52,7 @@ platform_project_name/
 
 ```
 
-* Copy delivered .dts .dtsi files to a `/devicetree-src` folder
+* Copy delivered .dts .dtsi files to a `devicetree-src/` folder
 > **Note:** The customization can be done by editing .dts, .dtsi files 
 ```
 devicetree-src/
@@ -75,4 +75,4 @@ devicetree-src/
 ```	
 
 * Running `build.sh` script allows to generate `kernel.dts` file for [u-boot](https://github.com/farbius/linux-vitis-zynq/tree/main/u-boot-xlnx-src) and [buildroot project](https://github.com/farbius/linux-vitis-zynq/tree/main/external-tree)
-* Copy `fsbl.elf`, `pmufw.elf` (for zynqmp) to `/boot` folder
+* Copy `fsbl.elf`, `pmufw.elf` (for zynqmp) to `boot/` folder

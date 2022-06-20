@@ -67,4 +67,4 @@ make xilinx_zynqmp_virt_defconfig
 make
 ```
 
-* Copy `u-boot.elf` to `/boot` folder
+* Copy `u-boot.elf` to `boot/` folder

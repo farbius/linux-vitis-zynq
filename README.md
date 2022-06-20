@@ -47,6 +47,10 @@ Repo structure
 1. Preparing and loading Image to the target
 
 ### Build ARM trusted firmware for zynqmp
+
+> **Note:** Please see [Xilinx Wiki](https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842305/Build+ARM+Trusted+Firmware+ATF) about building arm-trusted-firmware  
+
+
 load and extract an archive with x86_64 Linux hosted cross compiler AArch64 ELF bare-metal target [aarch64-none-elf](https://developer.arm.com/downloads/-/gnu-a)
 
 ```
@@ -69,7 +73,7 @@ cd arm-trusted-firmware
 make CROSS_COMPILE=aarch64-none-elf- PLAT=zynqmp RESET_TO_BL31=1
 ```
 
-copy bl31.elf to `/boot`
+copy `/arm-trusted-firmware/build/zynqmp/release/bl31/bl31.elf` to `boot/`
 
 
 ### Preparing and loading Image to the target
@@ -78,7 +82,7 @@ and `image.itb` (`rootfs.cpio`, `devicetree.dtb`, `Linux_kernel`)
 
 For generating `BOOT.BIN` Vitis 2022.1 is used (In created Platform Project `Xilinx - Create Boot Image - Zynq and Zynq Ultrascle - Browse output.bif file`) 
 
-`output.bif` is situated in `/boot` folder
+`output.bif` is situated in `boot/` folder
 
 Created BOOT.BIN file should be writing into flash memory
 
@@ -96,18 +100,35 @@ IP address 192.168.0.21 for tftp server are pointed in u-boot settings (.h confi
 
 Commands for loading and running image.itb in u-boot console:
 
+*Zynq 7000:*
 ```
-tftpb 0x4000000 image.itb
+tftpb 0x4000000 image-arty.itb
 bootm 0x4000000
+```
+
+*Zynqmp:*
+```
+tftpb 0x60000000 image-trenz.itb
+bootm 0x60000000
 ```
 
 Last command will load and run Linux on the target
 
 #### Writing BOOT.BIN into flash from u-boot (BOOT.BIN is less than 8 Mb)
 
+
+*Zynq 7000:*
 ```sh
 tftpb 0x4000000 BOOT.BIN
 sf probe 0 0 0
 sf erase 0 0x1000000
 sf write 0x4000000 0 0x800000
+```
+
+*Zynqmp:*
+```sh
+tftpb 0x60000000 BOOT.BIN
+sf probe 0 0 0
+sf erase 0 0x800000
+sf write 0x60000000 0 0x800000
 ```
