@@ -2,6 +2,6 @@
 the_ROM_image:
 {
 	[bootloader]fsbl.elf
-	arty_z7k.bit
+	system.bit
 	[offset = 5242880]u-boot.elf
 }

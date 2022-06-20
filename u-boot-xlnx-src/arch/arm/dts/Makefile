@@ -289,7 +289,7 @@ dtb-$(CONFIG_ARCH_ZYNQ) += \
 	zynq-zturn-v5.dtb \
 	zynq-zybo.dtb \
 	zynq-zybo-z7.dtb \
-	arty_zynq.dtb
+	zynq-arty.dtb
 dtb-$(CONFIG_ARCH_ZYNQMP) += \
 	avnet-ultra96-rev1.dtb			\
 	avnet-ultrazedev-cc-v1.0-ultrazedev-som-v1.0.dtb	\
@@ -350,7 +350,8 @@ dtb-$(CONFIG_ARCH_ZYNQMP) += \
 	zynqmp-zc1751-xm016-dc2.dtb		\
 	zynqmp-zc1751-xm017-dc3.dtb		\
 	zynqmp-zc1751-xm018-dc4.dtb		\
-	zynqmp-zc1751-xm019-dc5.dtb
+	zynqmp-zc1751-xm019-dc5.dtb		\
+	zynqmp-trenz.dtb
 dtb-$(CONFIG_ARCH_VERSAL) += \
 	versal-mini.dtb \
 	versal-mini-emmc0.dtb \

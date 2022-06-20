@@ -10,7 +10,7 @@ sudo apt-get install diffstat chrpath socat xterm autoconf libtool tar unzip tex
 sudo apt-get install libsdl1.2-dev libglib2.0-dev zlib1g:i386 screen pax gzip gawk
 sudo apt-get install swig python3-dev
 sudo apt-get install python3-pip
-sudo apt-get install gcc make gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi
+sudo apt-get install gcc make gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
 sudo apt-get install u-boot-tools
 pip3 install setuptools-scm==5.0.2
 ```
@@ -45,6 +45,31 @@ Repo structure
 1. [Customizing and building u-boot](https://github.com/farbius/linux-vitis-zynq/tree/main/u-boot-xlnx-src)
 1. [Customizing and building a buildroot project](https://github.com/farbius/linux-vitis-zynq/tree/main/external-tree)
 1. Preparing and loading Image to the target
+
+### Build ARM trusted firmware for zynqmp
+load and extract an archive with x86_64 Linux hosted cross compiler AArch64 ELF bare-metal target [aarch64-none-elf](https://developer.arm.com/downloads/-/gnu-a)
+
+```
+ls -l
+total 28
+-rw-r--r-- 1 aleksei aleksei 3797 Jul 13  2021 10.3-2021.07-x86_64-aarch64-none-elf-manifest.txt
+drwxr-xr-x 5 aleksei aleksei 4096 Jul  1  2021 aarch64-none-elf
+drwxr-xr-x 2 aleksei aleksei 4096 Jul  1  2021 bin
+drwxr-xr-x 3 aleksei aleksei 4096 Jul  1  2021 include
+drwxr-xr-x 4 aleksei aleksei 4096 Jul  1  2021 lib
+drwxr-xr-x 3 aleksei aleksei 4096 Jul  1  2021 libexec
+drwxr-xr-x 7 aleksei aleksei 4096 Jul  1  2021 share
+
+cd bin/
+export PATH=`pwd`:$PATH
+source ~/.bashrc
+cd ../..
+git clone https://github.com/Xilinx/arm-trusted-firmware.git
+cd arm-trusted-firmware
+make CROSS_COMPILE=aarch64-none-elf- PLAT=zynqmp RESET_TO_BL31=1
+```
+
+copy bl31.elf to `/boot`
 
 
 ### Preparing and loading Image to the target

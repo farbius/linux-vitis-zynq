@@ -7,5 +7,4 @@ the_ROM_image:
 	[destination_device = pl]system.bit
 	[destination_cpu = a53-0, exception_level = el-3, trustzone]bl31.elf
 	[destination_cpu = a53-0, exception_level = el-2]u-boot.elf
-	[offset = 0x800000, destination_cpu = a53-0]D:\work\Education\advanced_engineering\labs\lab_buildroot\u-boot\boot\image.itb
 }

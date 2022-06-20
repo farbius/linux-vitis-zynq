@@ -3,7 +3,7 @@
 ```sh
 git clone https://github.com/Xilinx/u-boot-xlnx.git
 cd u-boot-xlnx
-git checkout xilinx-v2021.2
+git checkout xilinx-v2022.1
 ```
 * Replace and add files from the repo (/u-boot-xlnx-src). In `/arch/arm/dts` folder compiled and renamed [kernel.dts](https://github.com/farbius/linux-vitis-zynq/tree/main/devicetree-src) file are used.
 > **Note:** The customization can be done by editing `xilinx_zynq_virt_defconfig`, `xilinx_zynqmp_virt_defconfig`, `arty_zynq.h` or `trenz_zynqmp.h` files 
@@ -16,33 +16,33 @@ u-boot-xlnx-src/
 |		|
 | 		+-- dts/
 |			|
-|			+-- arty_zynq.dts
-|			+-- trenz_zynqmp.dts
+|			+-- zynq-arty.dts
+|			+-- zynqmp-trenz.dts
 |			+-- Makefile
 |				|dtb-$(CONFIG_ARCH_ZYNQ) += \
-|				|    arty_zynq.dtb
+|				|    zynq-arty.dtb
 |				|dtb-$(CONFIG_ARCH_ZYNQMP) += \
-|				|    trenz_zynqmp.dtb
+|				|    zynqmp-trenz.dtb
 |	 			`----
 |
 +-- configs/
 |	|
 |	+-- xilinx_zynq_virt_defconfig
-|	|		|DEFAULT_DEVICETREE = "arty_zynq"
-|	|		|DEFAULT_SYS_FILE   = "arty_zynq"
+|	|		|CONFIG_DEFAULT_DEVICETREE="zynq-arty"
+|	|		|CONFIG_SYS_CONFIG_NAME="zynq-arty"
 |	|		`----
 |	|
 |	+-- xilinx_zynqmp_virt_defconfig
-|			|DEFAULT_DEVICETREE = "trenz_zynqmp"
-|			|DEFAULT_SYS_FILE   = "trenz_zynqmp"
+|			|CONFIG_DEFAULT_DEVICETREE="zynqmp-trenz"
+|			|CONFIG_SYS_CONFIG_NAME="zynqmp-trenz"
 |	 		`----
 |
 +-- include/
 	|
  	+-- conf/
 		|
-		+-- arty_zynq.h
-		+-- trenz_zynqmp.h
+		+-- zynq-arty.h
+		+-- zynqmp-trenz.h
 ```
 
 * Compile the u-boot sources by using target-related cross-compiler (arm32 or aarch64) 
@@ -60,7 +60,7 @@ make
 *ZynqMP:*
 ```sh
 cd u-boot-xlnx
-export CROSS_COMPILE=aarch64-linux-gnueabihf-
+export CROSS_COMPILE=aarch64-linux-gnu-
 export ARCH=arm
 make distclean
 make xilinx_zynqmp_virt_defconfig
