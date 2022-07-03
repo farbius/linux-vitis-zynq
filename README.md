@@ -8,6 +8,7 @@ The dependencies for Ubuntu 18.04
 sudo apt-get install -y gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex bison libselinux1 gnupg wget 
 sudo apt-get install diffstat chrpath socat xterm autoconf libtool tar unzip texinfo zlib1g-dev gcc-multilib build-essential 
 sudo apt-get install libsdl1.2-dev libglib2.0-dev zlib1g:i386 screen pax gzip gawk
+sudo apt-get install python-dev
 sudo apt-get install swig python3-dev
 sudo apt-get install python3-pip
 sudo apt-get install gcc make gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
