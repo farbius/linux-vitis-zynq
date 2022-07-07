@@ -51,7 +51,7 @@ make --directory=/path/to/buildroot/git BR2_EXTERNAL=/path/to/this/git zynqmp_de
 ```
 mkdir -p /path/to/build/dir/zynq7k
 cd /path/to/build/dir/zynq7k
-make --directory=/path/to/buildroot/git BR2_EXTERNAL=/path/to/this/git zynq7k_defconfig O=$PWD
+make --directory=/path/to/buildroot/git BR2_EXTERNAL=/path/to/this/git zynq_defconfig O=$PWD
 ```
 * Build Image
 

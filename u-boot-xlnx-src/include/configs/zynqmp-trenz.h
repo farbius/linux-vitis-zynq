@@ -16,7 +16,10 @@
 
 #define CONFIG_EXTRA_ENV_SETTINGS 	\
 	"ipaddr=192.168.0.123\0" 	\
-	"sdboot=echo Copying Linux from QSPI to RAM...;" 	\
+	"qspiboot=echo Copying Linux from QSPI to RAM...;" 	\
 		"sf probe 0 && sf read 0x60000000 0x800000 0x800000 && bootm 0x60000000\0" 			\
+	"tftpboot=echo Copying Linux via TFTP to RAM...;"	\
+		"tftpb 0x60000000 image-arty.itb && bootm 4000000\0"	\
 ""
-#define CONFIG_BOOTCOMMAND	"run sdboot"
+
+#define CONFIG_BOOTCOMMAND	"run qspiboot"

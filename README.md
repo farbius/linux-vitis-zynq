@@ -5,15 +5,15 @@ The system software was build by using Windows 10 with Vitis 2022.2 installed an
 The dependencies for Ubuntu 18.04
 
 ```sh
-sudo apt-get install -y gcc git make net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex bison libselinux1 gnupg wget 
+sudo apt-get install -y git net-tools libncurses5-dev tftpd zlib1g-dev libssl-dev flex bison libselinux1 gnupg wget 
 sudo apt-get install diffstat chrpath socat xterm autoconf libtool tar unzip texinfo zlib1g-dev gcc-multilib build-essential 
 sudo apt-get install libsdl1.2-dev libglib2.0-dev zlib1g:i386 screen pax gzip gawk
-sudo apt-get install python-dev
 sudo apt-get install swig python3-dev
 sudo apt-get install python3-pip
 sudo apt-get install gcc make gcc-arm-linux-gnueabi binutils-arm-linux-gnueabi gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu
 sudo apt-get install u-boot-tools
 pip3 install setuptools-scm==5.0.2
+sudo apt-get install git-gui
 ```
 
 Repo structure
@@ -21,21 +21,27 @@ Repo structure
 ```
 +-- boot/ # used for keeping compiled images
 |
-+-- devicetree-src/ # for device tree sources
++-- devicetree-src/ 	# for device tree sources
 |	|
 |	+-- zynq/
 |	+-- zynqmp/
 |
-+-- external-tree/ # buildroot project
++-- external-tree/ 	# buildroot project
 |	|
 |	+-- boards/
 |	+-- configs/
 |
-+-- u-boot-xlnx-src/ # for u-boot sources
++-- u-boot-xlnx-src/ 	# for u-boot sources
+|	|
+|	+-- arch/
+|	+-- configs/
+|	+-- include/
+|
++-- user-space-app/ 	# user space application
 	|
-	+-- arch/
-	+-- configs/
-	+-- include/
+	+-- dma/ 	# axidma
+	+-- gpio-arty/	# gpio leds and pb from user space
+	+-- gpio-arty-py/ # gpio leds and pb from user space for python
 ```
 
 
