@@ -1,0 +1,2 @@
+source "$BR2_EXTERNAL_MYDIR_PATH/package/fpgautil/Config.in"
+

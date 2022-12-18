@@ -1,0 +1,4 @@
+config BR2_PACKAGE_FPGAUTIL
+	bool "fpgautil"
+	help
+	  Utility for programming PL from PS
