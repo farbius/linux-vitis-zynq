@@ -33,7 +33,7 @@ external-tree/
 +-- external.mk
 +-- external.desc
 ```
-### Steps are
+### Steps are (or run build_zynq.sh / build_zynqmp.sh from the root)
 
 * Clone buildroot repository `git clone https://github.com/buildroot/buildroot.git`.
 * Checkout to version 2023.05 `git checkout tags/2023.05`
