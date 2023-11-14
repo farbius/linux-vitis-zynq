@@ -74,5 +74,5 @@ devicetree-src/
  	+-- zynqmp.sh
 ```	
 
-* Running `build.sh` script allows to generate `kernel.dts` file for [u-boot](https://github.com/farbius/linux-vitis-zynq/tree/main/u-boot-xlnx-src) and [buildroot project](https://github.com/farbius/linux-vitis-zynq/tree/main/external-tree)
+* Running `build.sh` script allows to generate devicetree file for [u-boot](https://github.com/farbius/linux-vitis-zynq/tree/main/u-boot-xlnx-src) and [buildroot project](https://github.com/farbius/linux-vitis-zynq/tree/main/external-tree)
 * Copy `fsbl.elf`, `pmufw.elf` (for zynqmp) to `boot/` folder
