@@ -1,5 +1,6 @@
 ## buildroot project customization (output file is image.itb, that combines compiled kernel, devicetree and rootfs)
 Buildroot project allows to deliver ROOTFS file system and Linux kernel. For additional linux packages `_defconfig` files can be used. 
+Also u-boot and ATF (for zynqmp) compilation are added
 The structure of buildroot project:
 ```
 external-tree/
@@ -33,6 +34,7 @@ external-tree/
 +-- external.mk
 +-- external.desc
 ```
+
 ### Steps are (or run build_zynq.sh / build_zynqmp.sh from the root)
 
 * Clone buildroot repository `git clone https://github.com/buildroot/buildroot.git`.
