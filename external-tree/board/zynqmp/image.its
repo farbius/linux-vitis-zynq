@@ -1,6 +1,6 @@
 /dts-v1/;
 / {
-	description = "XXX Name image";
+	description = "zynqmp image";
 	#address-cells = <1>;
 	images {
 		kernel-1 {
@@ -18,7 +18,7 @@
 		};
 		fdt-1 {
 			description = "Flattened Device Tree blob";
-			data = /incbin/("./kernel.dtb");
+			data = /incbin/("./system-top.dtb");
 			type = "flat_dt";
 			arch = "arm64";
 			os = "linux";
@@ -29,11 +29,11 @@
 		};
 		ramdisk-1 {
 			description = "RAMDisk Image";
-			data = /incbin/("./rootfs.cpio.lzma");
+			data = /incbin/("./rootfs.cpio.lzo");
 			type = "ramdisk";
 			arch = "arm64";
 			os = "linux";
-			compression = "lzma";
+			compression = "lzo";
 			load = <0x10000000>;
 			entry = <0x10000000>;
 			hash-1 {

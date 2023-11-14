@@ -1,0 +1,77 @@
+
+/ {
+	model = "Zynq Arty Z7 Development Board";
+	compatible = "digilent,zynq-artyz7", "xlnx,zynq-7000";
+
+	chosen {
+		bootargs = "console=ttyPS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio";
+	};
+
+	usb_phy0: usb_phy@0 {
+		compatible = "ulpi-phy";
+		#phy-cells = <0>;
+		reg = <0xe0002000 0x1000>;
+		view-port = <0x0170>;
+		drv-vbus;
+	};
+
+};
+
+/*---------------------- ETH -----------------*/
+
+
+&qspi {
+	u-boot,dm-pre-reloc;
+};
+
+/*
+&gem0 {
+	phy-handle = <&ethernet_phy>;
+
+	ethernet_phy: ethernet-phy@0 { 
+	reg = <1>;
+	device_type = "ethernet-phy";
+	};
+};
+*/
+&usb0 {	
+	usb-phy = <&usb_phy0>;
+	dr_mode = "host";
+	/delete-property/ usb-reset;
+};
+
+
+&sdhci0 {
+	u-boot,dm-pre-reloc;
+};
+
+&uart0 {
+	u-boot,dm-pre-reloc;
+};
+
+
+/*----------------------  I2C -----------------*/
+
+&i2c0 {
+	status = "okay";
+
+
+	bmp280@76 {
+		compatible = "bosch,bme280";
+		reg = <0x76>;
+	};
+
+};
+
+/*----------------------  PL  -----------------*/
+/*
+&axi_dma_0{
+	compatible = "arty-axidma-0";
+};
+
+*/
+
+/*---------------------- QSPI -----------------*/
+
+
+

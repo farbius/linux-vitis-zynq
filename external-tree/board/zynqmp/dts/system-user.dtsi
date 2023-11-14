@@ -1,0 +1,123 @@
+
+/*-------------------- SD0 eMMC ----------------*/
+&sdhci0 {
+    // disable-wp;
+    no-1-8-v;
+};
+
+
+/*-------------------- SD1 sd2.0 ----------------*/
+&sdhci1 {
+    disable-wp;
+    no-1-8-v;
+};
+
+
+/*-------------------- USB 2.0 only ----------------*/
+&dwc3_0 {
+    status = "okay";
+    dr_mode = "host";
+    maximum-speed = "high-speed";
+    /delete-property/phy-names;
+    /delete-property/phys;
+    /delete-property/snps,usb3_lpm_capable;
+     snps,dis_u2_susphy_quirk;
+    snps,dis_u3_susphy_quirk;
+};
+
+&usb0 {
+    status = "okay";
+    /delete-property/ clocks;
+    /delete-property/ clock-names;
+    clocks = <0x3 0x20>;
+    clock-names = "bus_clk";
+};
+
+
+/*------------------ ETH PHY --------------------*/
+&gem3 {
+    /delete-property/ local-mac-address;
+    phy-handle = <&phy0>;
+    
+    nvmem-cells = <&eth0_addr>;
+    nvmem-cell-names = "mac-address";
+    
+    phy0: phy0@1 {
+        device_type = "ethernet-phy";
+        reg = <1>;
+    };
+};
+
+
+/*------------------ QSPI -------------------- */
+&qspi {
+    #address-cells = <1>;
+    #size-cells = <0>;
+    status = "okay";
+    flash0: flash@0 {
+        compatible = "jedec,spi-nor";
+        reg = <0x0>;
+        #address-cells = <1>;
+        #size-cells = <1>;
+    };
+};
+
+/*----------------------  PL  -----------------*/
+&axi_dma_0{
+	compatible = "arty-axidma-0";
+};
+
+&axi_dma_1{
+	compatible = "arty-axidma-1";
+};
+
+
+/*------------------ I2C --------------------*/
+&i2c0 {
+	status = "okay";
+
+	adc@68 {
+		compatible = "mcp3422";
+		reg = <0x68>;
+	};
+
+	ina219@40 {
+		compatible = "ti,ina219";
+		reg = <0x40>;
+		// shunt-resistor = <100000>;
+	};
+	ina219@41 {
+		compatible = "ti,ina219";
+		reg = <0x41>;
+		// shunt-resistor = <60000>; /* = 60 mOhms */
+	};
+	ina219@44 {
+		compatible = "ti,ina219";
+		reg = <0x44>;
+	};
+
+	bmp280@76 {
+		compatible = "bosch,bme280";
+		reg = <0x76>;
+	};
+
+
+	pca9557@1f {
+		compatible = "nxp,pca9557";
+		reg = <0x1f>;
+		gpio-controller;
+		#gpio-cells = <2>;
+	};
+
+
+    eeprom: eeprom@50 {
+        compatible = "microchip,24aa025", "atmel,24c02";
+        reg = <0x50>;
+        #address-cells = <1>;
+        #size-cells = <1>;
+         eth0_addr: eth-mac-addr@FA {
+              reg = <0xFA 0x06>;
+            };
+        };
+};
+

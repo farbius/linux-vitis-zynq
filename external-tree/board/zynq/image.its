@@ -18,7 +18,7 @@
 		};
 		fdt-1 {
 			description = "Flattened Device Tree blob";
-			data = /incbin/("./kernel.dtb");
+			data = /incbin/("./system-top.dtb");
 			type = "flat_dt";
 			arch = "arm";
 			os = "linux";
