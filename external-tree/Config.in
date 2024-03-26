@@ -1,2 +1,1 @@
-source "$BR2_EXTERNAL_EDU_PATH/package/fpgautil/Config.in"
 
